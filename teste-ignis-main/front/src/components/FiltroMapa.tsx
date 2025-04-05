@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+// Componente principal
 const FiltroMapa: React.FC = () => {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0); // controla o estado atual do botão deslizante
 
-  const estados = ['Focos', 'Área de Calor', 'Riscos'];
-  const cores = ['#4CAF50', '#FF9800', '#D32F2F'];
+  const estados = ['Focos', 'Área de Calor', 'Riscos']; // nomes das camadas de visualização
+  const cores = ['#4CAF50', '#FF9800', '#D32F2F']; // cores correspondentes a cada camada
 
+  // Gera o slider com cor de fundo e posição do thumb conforme o estado atual
   const atualizarEstado = () => {
     return (
       <Slider style={{ backgroundColor: cores[index] }}>
@@ -18,16 +20,19 @@ const FiltroMapa: React.FC = () => {
   return (
     <FiltroContainer>
       <Filtros>
+        {/* Rótulos acima do slider */}
         <ToggleLabels>
           <span>Focos</span>
           <span>Área de Calor</span>
           <span>Riscos</span>
         </ToggleLabels>
 
+        {/* Slider clicável que alterna o índice */}
         <SliderContainer onClick={() => setIndex((index + 1) % estados.length)}>
           {atualizarEstado()}
         </SliderContainer>
 
+        {/* Dropdown de estados */}
         <label htmlFor="estado">Estados</label>
         <Select id="estado" name="estado">
           <option value="">Selecione um estado</option>
@@ -60,6 +65,7 @@ const FiltroMapa: React.FC = () => {
           <option value="to">Tocantins</option>
         </Select>
 
+        {/* Dropdown de biomas */}
         <label htmlFor="bioma">Biomas</label>
         <Select id="bioma" name="bioma">
           <option value="">Selecione um bioma</option>
@@ -71,7 +77,7 @@ const FiltroMapa: React.FC = () => {
           <option value="pampa">Pampa</option>
         </Select>
 
-
+        {/* Filtro por intervalo de datas */}
         <Datas>
           <Label>Datas:</Label>
           <InputGroup>
@@ -86,6 +92,7 @@ const FiltroMapa: React.FC = () => {
           </InputGroup>
         </Datas>
 
+        {/* Botão para aplicar os filtros */}
         <AplicarButton>Aplicar</AplicarButton>
       </Filtros>
     </FiltroContainer>
@@ -93,6 +100,8 @@ const FiltroMapa: React.FC = () => {
 };
 
 export default FiltroMapa;
+
+// Estilos com styled-components
 
 const FiltroContainer = styled.div`
   font-weight: bold;  
@@ -160,13 +169,13 @@ const Label = styled.label`
 const InputGroup = styled.div`
   display: flex;
   justify-content: space-between;
-  gap: 15px; /* Espaço entre os campos "Início" e "Fim" */
+  gap: 15px;
 `;
 
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 48%; /* Ajusta o tamanho de cada campo */
+  width: 48%;
 `;
 
 const Input = styled.input`

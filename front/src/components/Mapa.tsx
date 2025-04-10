@@ -1,29 +1,18 @@
-// Mapa.tsx
 import React from 'react';
 import styled from 'styled-components';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { LatLngExpression } from 'leaflet';
-import 'leaflet/dist/leaflet.css'; // Importando o CSS necessário
+import MapComponent from './MapComponent'; // Importe o novo componente de mapa
 
 const Mapa: React.FC = () => {
-  // Definindo a posição inicial do mapa (latitude e longitude)
-  const position: LatLngExpression = [51.505, -0.09]; // Posição central (Londres, por exemplo)
-  const zoom = 13; // Nível de zoom
+  // Definindo a posição inicial do mapa (latitude e longitude) e bioma
+  const latitude = -15.7801;  // Exemplo de latitude para Brasília
+  const longitude = -47.9292; // Exemplo de longitude para Brasília
+  const bioma = 'Cerrado';    // Exemplo de bioma
 
   return (
     <MapaContainer>
-      <MapContainer center={position} zoom={zoom} style={{ width: '100%', height: '100%' }}>
-        {/* Usando o TileLayer para carregar o mapa */}
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
-        
-        {/* Adicionando um marcador */}
-        <Marker position={position}>
-          <Popup>Você está aqui!</Popup>
-        </Marker>
-      </MapContainer>
+      {/* Usando o MapComponent com latitude, longitude e bioma */}
+      <MapComponent latitude={latitude} longitude={longitude} bioma={bioma} />
     </MapaContainer>
   );
 };

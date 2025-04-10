@@ -152,6 +152,7 @@ const SliderThumb1 = styled.div`
   height: 20px;
   background-color: #333;
   border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
 `;
 
 const SliderThumb2 = styled.div`

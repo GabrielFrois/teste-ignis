@@ -1,21 +1,26 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react'; // Importa o React e o hook useState para gerenciamento de estado
+import styled from 'styled-components'; // Importa a biblioteca styled-components para estilização com CSS-in-JS
 
+// Componente funcional FiltroGrafico
 const FiltroGrafico: React.FC = () => {
-  const [index1, setIndex1] = useState(0);
-  const [index2, setIndex2] = useState(0);
+  // Definindo estados para controlar os índices dos sliders
+  const [index1, setIndex1] = useState(0); // Índice para o primeiro slider
+  const [index2, setIndex2] = useState(0); // Índice para o segundo slider
 
-  const estados1 = ['Focos', 'Área de Calor', 'Riscos'];
-  const cores1 = ['#4CAF50', '#FF9800', '#D32F2F'];
-  const estados2 = ['Estados', 'Biomas'];
-  const cores2 = ['#2196F3', '#9C27B0'];
+  // Listas de estados e cores para os sliders
+  const estados1 = ['Focos', 'Área de Calor', 'Riscos']; // Opções para o primeiro slider
+  const cores1 = ['#4CAF50', '#FF9800', '#D32F2F']; // Cores para o primeiro slider
+  const estados2 = ['Estados', 'Biomas']; // Opções para o segundo slider
+  const cores2 = ['#2196F3', '#9C27B0']; // Cores para o segundo slider
 
+  // Função para atualizar o estado do primeiro slider
   const atualizarEstado1 = () => (
     <Slider1 style={{ backgroundColor: cores1[index1] }}>
       <SliderThumb1 style={{ transform: `translateX(${index1 * 122}px)` }} />
     </Slider1>
   );
 
+  // Função para atualizar o estado do segundo slider
   const atualizarEstado2 = () => (
     <Slider2 style={{ backgroundColor: cores2[index2] }}>
       <SliderThumb2 style={{ transform: `translateX(${index2 * 75}px)` }} />
@@ -34,7 +39,7 @@ const FiltroGrafico: React.FC = () => {
 
         {/* Primeiro Slider */}
         <SliderContainer onClick={() => setIndex1((index1 + 1) % estados1.length)}>
-          {atualizarEstado1()}
+          {atualizarEstado1()} {/* Atualiza o primeiro slider com base no índice */}
         </SliderContainer>
 
         {/* Rótulos do segundo slider */}
@@ -45,16 +50,19 @@ const FiltroGrafico: React.FC = () => {
 
         {/* Segundo Slider */}
         <SliderContainer onClick={() => setIndex2((index2 + 1) % estados2.length)}>
-          {atualizarEstado2()}
+          {atualizarEstado2()} {/* Atualiza o segundo slider com base no índice */}
         </SliderContainer>
 
+        {/* Seção de datas */}
         <Datas>
           <Label>Datas:</Label>
           <InputGroup>
+            {/* Input para a data de início */}
             <InputContainer>
               <Label htmlFor="inicio">Início</Label>
               <Input type="date" id="inicio" name="inicio" min="2025-03-20" max="2025-03-27" />
             </InputContainer>
+            {/* Input para a data de fim */}
             <InputContainer>
               <Label htmlFor="fim">Fim</Label>
               <Input type="date" id="fim" name="fim" min="2025-03-20" max="2025-03-27" />
@@ -62,153 +70,167 @@ const FiltroGrafico: React.FC = () => {
           </InputGroup>
         </Datas>
 
+        {/* Botão para aplicar os filtros */}
         <AplicarButton>Aplicar</AplicarButton>
       </Filtros>
     </FiltroContainer>
   );
 };
 
-export default FiltroGrafico;
+export default FiltroGrafico; // Exporta o componente FiltroGrafico para ser usado em outros lugares
 
-// Estilizações
+// Estilizações dos componentes com styled-components
 
+// Container principal do filtro
 const FiltroContainer = styled.div`
-  font-weight: bold;
-  padding: 20px;
-  background-color: #d32f2f;
-  height: 83vh;
-  width: 350px;
-  border-radius: 0px 8px 8px 8px;
-  z-index: 1;
-  margin-top: 2%;
-  position: fixed;
+  font-weight: bold; // Estilo do texto dentro do filtro
+  padding: 20px; // Espaçamento interno
+  background-color: #d32f2f; // Cor de fundo
+  height: 83vh; // Altura do container
+  width: 350px; // Largura do container
+  border-radius: 0px 8px 8px 8px; // Borda arredondada no canto superior direito e inferior
+  z-index: 1; // Prioridade de sobreposição
+  margin-top: 2%; // Margem superior
+  position: fixed; // Fixa o filtro na tela
 `;
 
+// Contêiner interno para os filtros
 const Filtros = styled.div`
-  padding: 10px 0;
+  padding: 10px 0; // Espaçamento interno
 `;
 
+// Estilos para os rótulos do primeiro slider
 const ToggleLabels1 = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  display: flex; // Exibe os rótulos em linha
+  justify-content: space-between; // Espaça os itens uniformemente
+  margin-bottom: 10px; // Espaçamento inferior
 
   span {
-    font-size: 16px;
-    color: #000;
-    font-weight: bold;
+    font-size: 16px; // Tamanho da fonte
+    color: #000; // Cor do texto
+    font-weight: bold; // Negrito
   }
 `;
 
+// Estilos para os rótulos do segundo slider
 const ToggleLabels2 = styled.div`
-  display: flex;
+  display: flex; // Exibe os rótulos em linha
   justify-content: center;  /* Alinha os itens ao centro */
-  gap: 60px;
+  gap: 60px; // Espaçamento entre os rótulos
 
   span {
-
-    font-size: 16px;
-    color: #000;
-    font-weight: bold;
+    font-size: 16px; // Tamanho da fonte
+    color: #000; // Cor do texto
+    font-weight: bold; // Negrito
   }
 `;
 
-
+// Estilos para o container de sliders
 const SliderContainer = styled.div`
-  margin: 10px 0;
+  margin: 10px 0; // Espaçamento vertical entre os sliders
 `;
 
+// Estilos para o primeiro slider
 const Slider1 = styled.div`
-  position: relative;
-  width: 345px;
-  height: 24px;
-  background-color: #ddd;
-  border-radius: 12px;
-  border: 1px solid white;
-  display: flex;
-  align-items: center;
-  padding: 2px;
-  cursor: pointer;
+  position: relative; // Define a posição relativa para o thumb
+  width: 345px; // Largura do slider
+  height: 24px; // Altura do slider
+  background-color: #ddd; // Cor de fundo
+  border-radius: 12px; // Bordas arredondadas
+  border: 1px solid white; // Borda branca
+  display: flex; // Utiliza flexbox
+  align-items: center; // Alinha os itens no centro
+  padding: 2px; // Espaçamento interno
+  cursor: pointer; // Cursor de ponteiro para indicar interatividade
 `;
 
+// Estilos para o segundo slider
 const Slider2 = styled.div`
-  position: relative;
-  width: 150px;
-  height: 24px;
-  background-color: #ddd;
-  border-radius: 12px;
-  border: 1px solid white;
-  display: flex;
-  align-items: center;
-  padding: 2px;
-  cursor: pointer;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative; // Define a posição relativa para o thumb
+  width: 150px; // Largura do slider
+  height: 24px; // Altura do slider
+  background-color: #ddd; // Cor de fundo
+  border-radius: 12px; // Bordas arredondadas
+  border: 1px solid white; // Borda branca
+  display: flex; // Utiliza flexbox
+  align-items: center; // Alinha os itens no centro
+  padding: 2px; // Espaçamento interno
+  cursor: pointer; // Cursor de ponteiro
+  left: 50%; // Centraliza o slider horizontalmente
+  transform: translateX(-50%); // Ajusta o deslocamento para garantir o alinhamento correto
 `;
 
+// Estilos para o "thumb" do primeiro slider
 const SliderThumb1 = styled.div`
-  position: absolute;
-  width: 100px;
-  height: 20px;
-  background-color: #333;
-  border-radius: 10px;
-  transition: transform 0.3s ease-in-out;
+  position: absolute; // Posição absoluta dentro do slider
+  width: 100px; // Largura do thumb
+  height: 20px; // Altura do thumb
+  background-color: #333; // Cor do thumb
+  border-radius: 10px; // Bordas arredondadas
+  transition: transform 0.3s ease-in-out; // Transição suave ao mover o thumb
 `;
 
+// Estilos para o "thumb" do segundo slider
 const SliderThumb2 = styled.div`
-  position: absolute;
-  width: 75px;
-  height: 20px;
-  background-color: #333;
-  border-radius: 10px;
-  transition: transform 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
+  position: absolute; // Posição absoluta dentro do slider
+  width: 75px; // Largura do thumb
+  height: 20px; // Altura do thumb
+  background-color: #333; // Cor do thumb
+  border-radius: 10px; // Bordas arredondadas
+  transition: transform 0.3s ease-in-out; // Transição suave ao mover o thumb
+  display: flex; // Utiliza flexbox para alinhamento
+  align-items: center; // Alinha os itens no centro
 `;
 
+// Estilos para a seção de datas
 const Datas = styled.div`
-  margin-top: 10px;
+  margin-top: 10px; // Espaçamento superior
 `;
 
+// Estilos para os rótulos de input
 const Label = styled.label`
-  font-weight: bold;
-  font-size: 1rem;
-  display: block;
-  margin-bottom: 5px;
+  font-weight: bold; // Negrito
+  font-size: 1rem; // Tamanho da fonte
+  display: block; // Exibe o rótulo como bloco
+  margin-bottom: 5px; // Espaçamento inferior
 `;
 
+// Estilos para o grupo de inputs
 const InputGroup = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
+  display: flex; // Exibe os inputs em linha
+  justify-content: space-between; // Espaça uniformemente os itens
+  gap: 15px; // Espaçamento entre os inputs
 `;
 
+// Estilos para o container de cada input
 const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 48%;
+  display: flex; // Exibe os itens em linha
+  flex-direction: column; // Organiza os itens na direção vertical
+  width: 48%; // Largura do container de input
 `;
 
+// Estilos para o input de data
 const Input = styled.input`
-  padding: 8px;
-  width: 150px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  margin-top: 5px;
+  padding: 8px; // Espaçamento interno
+  width: 150px; // Largura do input
+  border-radius: 4px; // Bordas arredondadas
+  border: 1px solid #ccc; // Borda do input
+  margin-top: 5px; // Espaçamento superior
 `;
 
+// Estilos para o botão de aplicar
 const AplicarButton = styled.button`
-  margin-top: 10px;
-  margin-left: 250px;
-  width: 100px;
-  padding: 8px;
-  background-color: gray;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
+  margin-top: 10px; // Espaçamento superior
+  margin-left: 250px; // Espaçamento à esquerda
+  width: 100px; // Largura do botão
+  padding: 8px; // Espaçamento interno
+  background-color: gray; // Cor de fundo
+  color: white; // Cor do texto
+  border: none; // Remove a borda
+  border-radius: 4px; // Bordas arredondadas
+  cursor: pointer; // Cursor de ponteiro
+  font-weight: bold; // Negrito
   &:hover {
-    background-color: #388E3C;
+    background-color: #388E3C; // Cor de fundo ao passar o mouse
   }
 `;

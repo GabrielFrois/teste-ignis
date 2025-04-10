@@ -1,29 +1,31 @@
 // Grafico.tsx
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react';  // Importa o React para usar o JSX
+import styled from 'styled-components';  // Importa a biblioteca styled-components para estilização
 
+// Componente principal de gráfico
 const Grafico: React.FC = () => {
   return (
     <GraficoContainer>
-      <p>Conteúdo do Gráfico</p>
+      <p>Conteúdo do Gráfico</p>  {/* Exibe um texto indicando que o conteúdo do gráfico será aqui */}
       {/* Adicione o conteúdo do gráfico aqui */}
     </GraficoContainer>
   );
 };
 
-export default Grafico;
+export default Grafico;  // Exporta o componente para ser usado em outras partes do aplicativo
 
+// Estilo para o contêiner do gráfico com styled-components
 const GraficoContainer = styled.div`
-  width: 153vh; /* Largura baseada na altura da tela (igual ao Mapa) */
-  height: 90vh; /* Altura do gráfico (igual ao Mapa) */
-  padding: 20px;
-  border-radius: 8px;
-  box-sizing: border-box;
-  overflow-y: auto; /* Permite rolar o conteúdo */
-  background-color: gray; /* Cor de fundo (igual ao Mapa) */
-  border-top-right-radius: 8px;
-  z-index: 1;
-  margin-top: 0.5%; /* Espaço do topo */
-  margin-left: 22%; /* Deslocamento da esquerda */
-  position: fixed; /* Fixa o componente na tela enquanto rola */
+  width: 153vh;  /* Define a largura do gráfico baseada na altura da tela (usar 'vh' significa que a largura é proporcional à altura da tela) */
+  height: 90vh;  /* Define a altura do gráfico (90% da altura da tela) */
+  padding: 20px;  /* Espaçamento interno de 20px em todos os lados */
+  border-radius: 8px;  /* Arredonda as bordas do gráfico */
+  box-sizing: border-box;  /* Inclui o padding no cálculo do tamanho do contêiner */
+  overflow-y: auto;  /* Permite a rolagem vertical se o conteúdo exceder a altura do gráfico */
+  background-color: gray;  /* Cor de fundo do gráfico */
+  border-top-right-radius: 8px;  /* Aplica borda arredondada na parte superior direita */
+  z-index: 1;  /* Define o índice z para que o gráfico seja exibido sobre outros elementos se necessário */
+  margin-top: 0.5%;  /* Define um pequeno espaço (0.5%) do topo da tela */
+  margin-left: 22%;  /* Desloca o gráfico 22% para a direita da tela */
+  position: fixed;  /* Fixa o gráfico na tela, mantendo-o no mesmo lugar enquanto a página rola */
 `;

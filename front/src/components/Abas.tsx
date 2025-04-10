@@ -46,7 +46,9 @@ const AbasContainer = styled.div`
   width: 80%;
   max-width: 350px;
   margin-top: 10px;
-
+  z-index: 1;
+  margin-top: 0.5%;
+  position: fixed;
 `;
 
 // Estilização do botão com base na prop 'ativo'

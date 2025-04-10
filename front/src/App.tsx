@@ -1,24 +1,30 @@
+// App.tsx
 import React, { useState } from 'react';
 import Header from './components/Header';
 import Abas from './components/Abas';
 import FiltroMapa from './components/FiltroMapa';
 import FiltroGrafico from './components/FiltroGrafico';
+import Mapa from './components/Mapa';  // Componente Mapa
+import Grafico from './components/Grafico';  // Componente Grafico
 import styled from 'styled-components';
 
 const App: React.FC = () => {
-  const [ativo, setAtivo] = useState('mapa');
+  const [ativo, setAtivo] = useState('mapa'); // Estado para controlar a aba ativa
 
   const handleClick = (tipo: string) => {
-    setAtivo(tipo);
+    setAtivo(tipo); // Atualiza o estado para exibir o conteúdo correto
   };
 
   return (
     <AppContainer>
       <Header /> {/* Cabeçalho */}
-      <ContentContainer>
-        <Abas onClick={handleClick} ativo={ativo} />
-        {ativo === 'mapa' ? <FiltroMapa /> : <FiltroGrafico />}
-      </ContentContainer>
+      <MainContent>
+        <ContentContainer>
+          <Abas onClick={handleClick} ativo={ativo} /> {/* Abas para alternar entre Mapa e Grafico */}
+          {ativo === 'mapa' ? <FiltroMapa /> : <FiltroGrafico />} {/* Filtros */}
+        </ContentContainer>
+        {ativo === 'mapa' ? <Mapa /> : <Grafico />} {/* Exibe Mapa ou Grafico com base na aba ativa */}
+      </MainContent>
     </AppContainer>
   );
 };
@@ -35,9 +41,15 @@ const AppContainer = styled.div`
   padding: 0;
 `;
 
+const MainContent = styled.div`
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden; /* Impede o conteúdo de ultrapassar os limites */
+`;
+
 const ContentContainer = styled.div`
-  flex-grow: 1;     /* Preenche o restante da tela */
+  flex-grow: 1; /* Preenche o restante da tela */
   display: flex;
   flex-direction: column;
-  overflow: auto;    /* Permite rolar o conteúdo */
+  overflow: auto; /* Permite rolar o conteúdo */
 `;

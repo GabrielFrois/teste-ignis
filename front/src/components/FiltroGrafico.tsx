@@ -76,9 +76,12 @@ const FiltroContainer = styled.div`
   font-weight: bold;
   padding: 20px;
   background-color: #d32f2f;
-  height: 100vh;
+  height: 83vh;
   width: 350px;
-  border-top-right-radius: 8px;
+  border-radius: 0px 8px 8px 8px;
+  z-index: 1;
+  margin-top: 2%;
+  position: fixed;
 `;
 
 const Filtros = styled.div`

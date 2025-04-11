@@ -6,7 +6,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
 // Importa o ícone personalizado para o marcador do mapa
-import markerIcon from "../pin.png"; // Alterando para o caminho correto do ícone
+import markerIcon from "../img/pin.png"; // Alterando para o caminho correto do ícone
 
 // Configuração do ícone do marcador do mapa
 const customIcon = new L.Icon({

@@ -9,9 +9,9 @@ const FiltroGrafico: React.FC = () => {
 
   // Listas de estados e cores para os sliders
   const estados1 = ['Foco de Calor', 'Área de Queimada', 'Risco de Fogo']; // Opções para o primeiro slider
-  const cores1 = ['#4CAF50', '#FF9800', '#D32F2F']; // Cores para o primeiro slider
+  const cores1 = ['#FF5722', '#795548', '#FF9800']; // Cores para o primeiro slider
   const estados2 = ['Estados', 'Biomas']; // Opções para o segundo slider
-  const cores2 = ['#2196F3', '#9C27B0']; // Cores para o segundo slider
+  const cores2 = ['#1976D2', '#388E3C']; // Cores para o segundo slider
 
   // Função para atualizar o estado do primeiro slider
   const atualizarEstado1 = () => (
@@ -224,7 +224,7 @@ const AplicarButton = styled.button`
   margin-left: 250px; // Espaçamento à esquerda
   width: 100px; // Largura do botão
   padding: 8px; // Espaçamento interno
-  background-color: gray; // Cor de fundo
+  background-color: #616161; // Cor de fundo
   color: white; // Cor do texto
   border: none; // Remove a borda
   border-radius: 4px; // Bordas arredondadas

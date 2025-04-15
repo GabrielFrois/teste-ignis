@@ -6,7 +6,7 @@ const FiltroMapa: React.FC = () => {
   const [index, setIndex] = useState(0); // Usa o hook useState para controlar o índice do slider (que alterna entre as camadas)
 
   // Define os nomes das camadas que serão usadas no slider
-  const estados = ['Focos', 'Área de Calor', 'Riscos'];
+  const estados = ['Foco de Calor', 'Área de Queimada', 'Risco de Fogo'];
   // Define as cores correspondentes para cada camada
   const cores = ['#4CAF50', '#FF9800', '#D32F2F'];
 
@@ -25,9 +25,9 @@ const FiltroMapa: React.FC = () => {
         
         {/* Rótulos das opções do slider (Focos, Área de Calor, Riscos) */}
         <ToggleLabels>
-          <span>Focos</span>
-          <span>Área de Calor</span>
-          <span>Riscos</span>
+        <span>{estados[0]}</span>
+          <span>{estados[1]}</span>
+          <span>{estados[2]}</span>
         </ToggleLabels>
 
         {/* Slider clicável que alterna o índice entre as camadas */}

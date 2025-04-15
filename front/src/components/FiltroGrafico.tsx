@@ -8,7 +8,7 @@ const FiltroGrafico: React.FC = () => {
   const [index2, setIndex2] = useState(0); // Índice para o segundo slider
 
   // Listas de estados e cores para os sliders
-  const estados1 = ['Focos', 'Área de Calor', 'Riscos']; // Opções para o primeiro slider
+  const estados1 = ['Foco de Calor', 'Área de Queimada', 'Risco de Fogo']; // Opções para o primeiro slider
   const cores1 = ['#4CAF50', '#FF9800', '#D32F2F']; // Cores para o primeiro slider
   const estados2 = ['Estados', 'Biomas']; // Opções para o segundo slider
   const cores2 = ['#2196F3', '#9C27B0']; // Cores para o segundo slider

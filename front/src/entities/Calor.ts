@@ -1,4 +1,4 @@
-export class Calor {
+export class Foco_calor {
     id: number;
     data: Date;
     geometria: any; // geometry(point, 4326)
